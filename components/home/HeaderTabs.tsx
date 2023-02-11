@@ -28,6 +28,7 @@ const HeaderButton: React.FC<Props> = ({text, textColor, btnColor}) => {
     </TouchableOpacity>
   );
 };
+
 export default HeaderTabs;
 
 const styles = StyleSheet.create({
