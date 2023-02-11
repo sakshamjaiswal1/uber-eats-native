@@ -11,7 +11,7 @@ export const HeaderTabs: React.FC = () => {
   return (
     <View style={styles.container}>
       <HeaderButton text="Delivery" btnColor="black" textColor="white" />
-      <HeaderButton text="Pickupzz" btnColor="white" textColor="black" />
+      <HeaderButton text="Pickup" btnColor="white" textColor="black" />
     </View>
   );
 };
