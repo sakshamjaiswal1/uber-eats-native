@@ -46,7 +46,7 @@ const SearchBar: React.FC<Props> = ({setCity}) => {
               <AntDesign
                 name="clockcircle"
                 size={11}
-                style={{marginRight: 6}}
+                style={styles.antDesign}
               />
               <Text>Search</Text>
             </View>
@@ -74,6 +74,9 @@ const styles = StyleSheet.create({
     padding: 9,
     borderRadius: 30,
     alignItems: 'center',
+  },
+  antDesign: {
+    marginRight: 6,
   },
 });
 
