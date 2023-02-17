@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
+import Categories from '../components/home/Categories';
 import HeaderTabs from '../components/home/HeaderTabs';
 import SearchBar from '../components/home/SearchBar';
 
 const Home = () => {
   const [city, setCity] = useState<string>('New York');
-  console.log(city);
+  const [activeTabs, setActiveTabs] = useState<string>('Delivery');
+
   return (
     <SafeAreaView>
       <View style={style.headerContainer}>
-        <HeaderTabs />
+        <HeaderTabs activeTabs={activeTabs} setActiveTabs={setActiveTabs} />
         <SearchBar setCity={setCity} />
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Categories />
+      </ScrollView>
     </SafeAreaView>
   );
 };

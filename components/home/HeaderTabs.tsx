@@ -1,30 +1,63 @@
+/* eslint-disable react-native/no-inline-styles */
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
 type Props = {
   text: string;
-  btnColor: string;
+
   textColor: string;
+  activeTabs: string;
+  setActiveTabs: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const HeaderTabs: React.FC = () => {
+type PropsMain = {
+  activeTabs: string;
+  setActiveTabs: React.Dispatch<React.SetStateAction<string>>;
+};
+export const HeaderTabs: React.FC<PropsMain> = ({
+  activeTabs,
+  setActiveTabs,
+}) => {
   return (
     <View style={styles.container}>
-      <HeaderButton text="Delivery" btnColor="black" textColor="white" />
-      <HeaderButton text="Pickup" btnColor="white" textColor="black" />
+      <HeaderButton
+        text="Delivery"
+        textColor="white"
+        activeTabs={activeTabs}
+        setActiveTabs={setActiveTabs}
+      />
+      <HeaderButton
+        text="Pickup"
+        textColor="black"
+        activeTabs={activeTabs}
+        setActiveTabs={setActiveTabs}
+      />
     </View>
   );
 };
-const HeaderButton: React.FC<Props> = ({text, textColor, btnColor}) => {
+const HeaderButton: React.FC<Props> = ({
+  text,
+  textColor,
+
+  activeTabs,
+  setActiveTabs,
+}) => {
   return (
     <TouchableOpacity
       style={[
         {
-          backgroundColor: btnColor,
+          backgroundColor: text === activeTabs ? 'black' : 'white',
         },
         styles.headerBtnTouch,
-      ]}>
-      <Text style={[{color: textColor}, styles.headerBtnTouch]}>{text}</Text>
+      ]}
+      onPress={() => setActiveTabs(text)}>
+      <Text
+        style={[
+          {color: text === activeTabs ? 'white' : 'black'},
+          styles.headerBtnTouch,
+        ]}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -47,4 +80,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-// =AIzaSyBKwklB8hvRWl1pr2f-YirvbF94brtNmyI
