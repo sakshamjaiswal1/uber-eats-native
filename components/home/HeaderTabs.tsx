@@ -35,13 +35,7 @@ export const HeaderTabs: React.FC<PropsMain> = ({
     </View>
   );
 };
-const HeaderButton: React.FC<Props> = ({
-  text,
-  textColor,
-
-  activeTabs,
-  setActiveTabs,
-}) => {
+const HeaderButton: React.FC<Props> = ({text, activeTabs, setActiveTabs}) => {
   return (
     <TouchableOpacity
       style={[
