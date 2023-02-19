@@ -6,27 +6,49 @@ export default function configureStore(initialState?: any) {
   const store = createStore(reducer, initialState);
   return store;
 }
-// <View
+// const { name, image, price, reviews, rating, categories } =
+// props.route.params;
+
+// const formattedCategories = categories.map((cat) => cat.title).join(" • ");
+
+// const description = `${formattedCategories} ${
+// price ? " • " + price : ""
+// } • 🎫 • ${rating} ⭐ (${reviews}+)`;
+// return (
+// <View>
+//   <RestaurantImage image={image} />
+//   <RestaurantName name={name} />
+//   <RestaurantDescription description={description} />
+// </View>
+// );
+// }
+
+// const RestaurantImage = (props) => (
+// <Image source={{ uri: props.image }} style={{ width: "100%", height: 180 }} />
+// );
+
+// const RestaurantName = (props) => (
+// <Text
 // style={{
-//   marginTop: 5,
-//   backgroundColor: "#fff",
-//   paddingVertical: 10,
-//   paddingLeft: 20,
+//   fontSize: 29,
+//   fontWeight: "600",
+//   marginTop: 10,
+//   marginHorizontal: 15,
 // }}
 // >
-// <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-//   {items.map((item, index) => (
-//     <View key={index} style={{ alignItems: "center", marginRight: 30 }}>
-//       <Image
-//         source={item.image}
-//         style={{
-//           width: 50,
-//           height: 40,
-//           resizeMode: "contain",
-//         }}
-//       />
-//       <Text style={{ fontSize: 13, fontWeight: "900" }}>{item.text}</Text>
-//     </View>
-//   ))}
-// </ScrollView>
-// </View>
+// {props.name}
+// </Text>
+// );
+
+// const RestaurantDescription = (props) => (
+// <Text
+// style={{
+//   marginTop: 10,
+//   marginHorizontal: 15,
+//   fontWeight: "400",
+//   fontSize: 15.5,
+// }}
+// >
+// {props.description}
+// </Text>
+// );
