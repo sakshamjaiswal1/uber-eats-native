@@ -1,4 +1,5 @@
-export const foods = [
+import {IfoodItem} from './../../utils/types/main';
+export const foods: IfoodItem[] = [
   {
     title: 'Lasagna',
     description: 'With butter lettuce, tomato and sauce bechamel',
