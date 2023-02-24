@@ -1,6 +1,14 @@
 import {IfoodItem} from './../../utils/types/main';
 export const foods: IfoodItem[] = [
   {
+    title: 'Chicken Kaali Mirch',
+    description:
+      'One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!',
+    price: '$11.50',
+    image:
+      'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
+  },
+  {
     title: 'Lasagna',
     description: 'With butter lettuce, tomato and sauce bechamel',
     price: '$13.50',
@@ -36,5 +44,13 @@ export const foods: IfoodItem[] = [
     price: '$13.50',
     image:
       'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
+  },
+  {
+    title: 'Chicken Kaali Mirch',
+    description:
+      'One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!',
+    price: '$11.50',
+    image:
+      'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
   },
 ];
