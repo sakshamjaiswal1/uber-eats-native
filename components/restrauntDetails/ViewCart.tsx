@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Modal, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
@@ -27,7 +28,7 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
     .reduce((prev: any, curr: any) => prev + curr, 0);
 
   const totalUSD = `$ ${total}`;
-
+  console.log(total);
   const addOrderToFireBase = async () => {
     setLoading(true);
     try {
@@ -61,7 +62,17 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
               <Text>{totalUSD}</Text>
             </View>
             <View>
-              <TouchableOpacity></TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalTouch}
+                onPress={() => {
+                  addOrderToFireBase();
+                  setModalVisible(false);
+                }}>
+                <Text style={styles.modalTouchCheckout}>Checkout</Text>
+                <Text style={styles.modalTouchPrice}>
+                  {total ? totalUSD : ''}
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -70,9 +81,56 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
   };
 
   return (
-    <View>
-      <Text>ViewCart</Text>
-    </View>
+    <>
+      <Modal
+        animationType="slide"
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}>
+        {checkoutModalContent()}
+      </Modal>
+      {total ? (
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'row',
+            position: 'absolute',
+            bottom: 130,
+            zIndex: 999,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              width: '100%',
+            }}>
+            <TouchableOpacity
+              style={{
+                marginTop: 20,
+                backgroundColor: 'black',
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                padding: 15,
+                borderRadius: 30,
+                width: 300,
+                position: 'relative',
+              }}
+              onPress={() => setModalVisible(true)}>
+              <Text style={{color: 'white', fontSize: 20, marginRight: 30}}>
+                View Cart
+              </Text>
+              <Text style={{color: 'white', fontSize: 20}}>{totalUSD}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <>
+          <Text>zzzzzzzzzzzzzzzzzzzzz</Text>
+        </>
+      )}
+    </>
   );
 };
 
@@ -89,6 +147,26 @@ const styles = StyleSheet.create({
     padding: 16,
     height: 500,
     borderWidth: 1,
+  },
+  modalTouch: {
+    marginTop: 20,
+    backgroundColor: 'black',
+    alignItems: 'center',
+    padding: 13,
+    borderRadius: 30,
+    width: 300,
+    position: 'relative',
+  },
+  modalTouchCheckout: {
+    color: 'white',
+    fontSize: 20,
+  },
+  modalTouchPrice: {
+    position: 'absolute',
+    right: 20,
+    color: 'white',
+    fontSize: 15,
+    top: 17,
   },
   restaurantName: {
     textAlign: 'center',
