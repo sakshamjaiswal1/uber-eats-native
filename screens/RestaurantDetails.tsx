@@ -11,12 +11,12 @@ type DetailsProps = {
 
 const RestaurantDetails: React.FC<DetailsProps> = ({route, navigation}) => {
   return (
-    <SafeAreaView>
+    <View>
       <About route={route} />
       <Divider width={1.8} style={styles.divider} />
       <MenuItems restaurantName={route.params.name} navigation={navigation} />
       <ViewCart navigation={navigation} />
-    </SafeAreaView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
