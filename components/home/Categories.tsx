@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingVertical: 10,
     paddingLeft: 20,
+    color: '#000000',
   },
   scrollCon: {
     alignItems: 'center',

@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 10,
+    color: '#000000',
   },
   ratingCon: {
     backgroundColor: '#eee',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 15,
     fontWeight: 'bold',
+    color: '#000000',
   },
   timeText: {
     fontSize: 13,

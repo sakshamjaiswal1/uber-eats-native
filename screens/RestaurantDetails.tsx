@@ -1,4 +1,4 @@
-import {View, StyleSheet, SafeAreaView} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import About from '../components/restrauntDetails/About';
 import {Divider} from 'react-native-elements';
@@ -11,7 +11,7 @@ type DetailsProps = {
 
 const RestaurantDetails: React.FC<DetailsProps> = ({route, navigation}) => {
   return (
-    <View>
+    <View style={styles.textBlack}>
       <About route={route} />
       <Divider width={1.8} style={styles.divider} />
       <MenuItems restaurantName={route.params.name} navigation={navigation} />
@@ -22,6 +22,10 @@ const RestaurantDetails: React.FC<DetailsProps> = ({route, navigation}) => {
 const styles = StyleSheet.create({
   divider: {
     marginVertical: 20,
+  },
+  textBlack: {
+    backgroundColor: '#ffffff',
+    color: '#000000',
   },
 });
 export default RestaurantDetails;

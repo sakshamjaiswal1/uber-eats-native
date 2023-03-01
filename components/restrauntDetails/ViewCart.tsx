@@ -8,9 +8,9 @@ import LottieView from 'lottie-react-native';
 import {IfoodItem} from '../../utils/types/main';
 import {
   collection,
-  getDocs,
-  addDoc,
   serverTimestamp,
+  setDoc,
+  doc,
 } from 'firebase/firestore/lite';
 type ViewCartProps = {
   navigation: any;
@@ -28,17 +28,24 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
     .reduce((prev: any, curr: any) => prev + curr, 0);
 
   const totalUSD = `$ ${total}`;
-  console.log(total);
+  // console.log(total);
   const addOrderToFireBase = async () => {
     setLoading(true);
     try {
       const orders = collection(db, 'cities');
-      const orderAdded = await addDoc(orders, {
+      // console.log(items, restaurantName);
+
+      // const orderAdded = await addDoc(orders, {
+      //   items,
+      //   restaurantName: restaurantName ? restaurantName : '',
+      //   createdAt: serverTimestamp(),
+      // });
+      const ordersAdded = await setDoc(doc(orders), {
         items,
-        restaurantName,
+        restaurantName: restaurantName ? restaurantName : '',
         createdAt: serverTimestamp(),
       });
-      console.log(orderAdded);
+      console.log(ordersAdded);
       setTimeout(() => {
         setLoading(false);
         navigation.navigate('OrderCompleted');
@@ -111,7 +118,7 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
                 marginTop: 20,
                 backgroundColor: 'black',
                 flexDirection: 'row',
-                justifyContent: 'flex-end',
+                justifyContent: 'center',
                 padding: 15,
                 borderRadius: 30,
                 width: 300,
@@ -126,9 +133,28 @@ const ViewCart: React.FC<ViewCartProps> = ({navigation}) => {
           </View>
         </View>
       ) : (
-        <>
-          <Text>zzzzzzzzzzzzzzzzzzzzz</Text>
-        </>
+        <></>
+      )}
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: 'balck',
+            position: 'absolute',
+            opacity: 0.6,
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            width: '100%',
+          }}>
+          <LottieView
+            style={{height: 200}}
+            source={require('../../assets/animations/scanner.json')}
+            autoPlay
+            speed={3}
+          />
+        </View>
+      ) : (
+        <></>
       )}
     </>
   );
