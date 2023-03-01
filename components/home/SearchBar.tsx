@@ -26,6 +26,7 @@ const SearchBar: React.FC<Props> = ({setCity}) => {
             borderRadius: 20,
             fontWeight: '700',
             marginTop: 7,
+            color: '#000000',
           },
           textInputContainer: {
             backgroundColor: '#eee',
@@ -33,6 +34,9 @@ const SearchBar: React.FC<Props> = ({setCity}) => {
             flexDirection: 'row',
             alignItems: 'center',
             marginRight: 10,
+          },
+          textPlaceholder: {
+            color: '#000000',
           },
         }}
         renderLeftButton={() => (

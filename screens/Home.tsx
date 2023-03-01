@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
-import {Divider, Text} from 'react-native-elements';
+import {Divider} from 'react-native-elements';
 import BottomTabs from '../components/home/BottomTabs';
 import Categories from '../components/home/Categories';
 import HeaderTabs from '../components/home/HeaderTabs';
@@ -31,10 +31,12 @@ const style = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#ffffff',
     padding: 15,
+    color: '#000000',
   },
   safeArea: {
     backgroundColor: '#eee',
     flex: 1,
+    color: '#000000',
   },
 });
 

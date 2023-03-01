@@ -8,9 +8,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {IfoodItem} from '../../utils/types/main';
 type MenuItemsProps = {
   restaurantName: string;
-  navigation: string;
+  navigation?: string;
   hideCheckBox?: boolean;
   marginLeft?: number;
+  lastOrder?: IfoodItem[];
 };
 
 type FoodInfoProps = {
@@ -27,6 +28,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({
   restaurantName,
   hideCheckBox,
   marginLeft,
+  lastOrder,
 }) => {
   const dispatch = useDispatch();
   const selectItem = (item: any, checkboxValue: any) => {
@@ -45,34 +47,72 @@ const MenuItems: React.FC<MenuItemsProps> = ({
   const isFoodInCart = (food: IfoodItem) =>
     Boolean(cartItems.find((items: any) => items.title === food.title));
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      {foods.map((food: IfoodItem, index: number) => (
-        <View key={index}>
-          <View style={styles.menuItemStyle}>
-            {hideCheckBox ? (
-              <></>
-            ) : (
-              <BouncyCheckbox
-                fillColor="green"
-                isChecked={isFoodInCart(food)}
-                style={styles.bouncyCheckbox}
-                onPress={checkboxValue => selectItem(food, checkboxValue)}
+    <>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {!lastOrder &&
+          foods.map((food: IfoodItem, index: number) => (
+            <View key={index}>
+              <View style={styles.menuItemStyle}>
+                {hideCheckBox ? (
+                  <></>
+                ) : (
+                  <BouncyCheckbox
+                    fillColor="green"
+                    isChecked={isFoodInCart(food)}
+                    style={styles.bouncyCheckbox}
+                    onPress={checkboxValue => selectItem(food, checkboxValue)}
+                  />
+                )}
+                <FoodInfo
+                  title={food.title}
+                  description={food.description}
+                  price={food.price}
+                />
+                <FoodImage
+                  image={food.image}
+                  marginLeft={marginLeft ? marginLeft : 0}
+                />
+              </View>
+              <Divider
+                width={0.5}
+                orientation="vertical"
+                style={styles.divider}
               />
-            )}
-            <FoodInfo
-              title={food.title}
-              description={food.description}
-              price={food.price}
-            />
-            <FoodImage
-              image={food.image}
-              marginLeft={marginLeft ? marginLeft : 0}
-            />
-          </View>
-          <Divider width={0.5} orientation="vertical" style={styles.divider} />
-        </View>
-      ))}
-    </ScrollView>
+            </View>
+          ))}
+        {lastOrder &&
+          lastOrder.map((food: IfoodItem, index: number) => (
+            <View key={index}>
+              <View style={styles.menuItemStyle}>
+                {hideCheckBox ? (
+                  <></>
+                ) : (
+                  <BouncyCheckbox
+                    fillColor="green"
+                    isChecked={isFoodInCart(food)}
+                    style={styles.bouncyCheckbox}
+                    onPress={checkboxValue => selectItem(food, checkboxValue)}
+                  />
+                )}
+                <FoodInfo
+                  title={food.title}
+                  description={food.description}
+                  price={food.price}
+                />
+                <FoodImage
+                  image={food.image}
+                  marginLeft={marginLeft ? marginLeft : 0}
+                />
+              </View>
+              <Divider
+                width={0.5}
+                orientation="vertical"
+                style={styles.divider}
+              />
+            </View>
+          ))}
+      </ScrollView>
+    </>
   );
 };
 

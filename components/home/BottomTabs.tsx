@@ -24,7 +24,7 @@ const Icon: React.FC<IconProps> = ({icon, text}) => (
   <TouchableOpacity>
     <View>
       <FontAwesome5 name={icon} size={25} style={styles.icon} />
-      <Text>{text}</Text>
+      <Text style={styles.textBlack}>{text}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -38,5 +38,8 @@ const styles = StyleSheet.create({
     margin: 10,
     marginHorizontal: 30,
     justifyContent: 'space-between',
+  },
+  textBlack: {
+    color: '#000000',
   },
 });
